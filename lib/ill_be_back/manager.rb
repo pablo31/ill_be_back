@@ -15,9 +15,9 @@ module IllBeBack
       !!@armed
     end
 
-    def debug
+    def debug(b)
       return unless armed?
-      debugger.call(self)
+      debugger.call(b)
     end
 
   end

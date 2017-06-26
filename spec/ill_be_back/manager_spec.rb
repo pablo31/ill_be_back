@@ -16,15 +16,15 @@ module IllBeBack
     end
 
     it 'shouldnt call the debugger' do
-      subject.debug
+      binding = double
+      subject.debug(binding)
     end
 
     it 'should call the debugger' do
-      caller = double
+      binding = double
       subject.prepare!
-      expect(debugger).to receive(:call).with(caller)
-      manager = subject
-      caller.instance_exec { manager.debug }
+      expect(debugger).to receive(:call).with(binding)
+      subject.debug(binding)
     end
 
   end
