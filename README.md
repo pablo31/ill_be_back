@@ -1,29 +1,33 @@
 # IllBeBack
 
-TODO: Write a gem description
+A line of code runs a million times but it has some kind of trouble in determinated conditions not given (or accessible) by the object who owns this line of code.
+I want to say when to stop and debug, from outside.
+Thats what IllBeBack does.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
     gem 'ill_be_back'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ill_be_back
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'pry'
+    require 'ill_be_back'
 
-## Contributing
+    class Model
 
-1. Fork it ( https://github.com/[my-github-username]/ill_be_back/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+      def magic
+        IllBeBack.debug { binding.pry }
+        puts "Something"
+      end
+
+    end
+
+    model = Model.new
+
+    model.magic # prints something
+    model.magic # prints something, again
+
+    IllBeBack.prepare!
+
+    model.magic # stops in pry, and then prints something
+    model.magic # back to normallity: prints something

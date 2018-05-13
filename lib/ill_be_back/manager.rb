@@ -1,12 +1,6 @@
 module IllBeBack
   class Manager
 
-    attr_accessor :debugger
-
-    def initialize(debugger)
-      self.debugger = debugger
-    end
-
     def prepare!
       @armed = true
     end
@@ -15,9 +9,10 @@ module IllBeBack
       !!@armed
     end
 
-    def debug(b)
+    def debug(&block)
       return unless armed?
-      debugger.call(b)
+      block.call
+      @armed = false
     end
 
   end
