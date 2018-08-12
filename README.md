@@ -39,3 +39,11 @@ Thats what IllBeBack does.
         IllBeBack.debug_at_call(4) { binding.pry } # stops at 4th call after 'prepare!' call
         IllBeBack.debug_between_calls(2, 4) { binding.pry } # stops at calls 2, 3 and 4 after 'prepare!' call
         IllBeBack.armed? # true if 'prepare!' was called
+
+## Ext
+
+        require 'ill_be_back/ext'
+        binding.prepare!
+        binding.armed?
+        binding.debug { binding.pry }
+        # and etc...

@@ -1,11 +1,8 @@
 class Binding
+  include ::IllBeBack::ClassMethods
 
-  def prepare!
-    ::IllBeBack.prepare!
-  end
-
-  def debug(&block)
-    ::IllBeBack.debug(&block)
+  def manager
+    ::IllBeBack.manager
   end
 
 end
