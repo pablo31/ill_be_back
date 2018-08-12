@@ -8,7 +8,7 @@ Thats what IllBeBack does.
 
     gem 'ill_be_back'
 
-## Usage
+## Basic usage
 
     require 'pry'
     require 'ill_be_back'
@@ -31,3 +31,11 @@ Thats what IllBeBack does.
 
     model.magic # stops in pry, and then prints something
     model.magic # back to normallity: prints something
+
+## Advanced usage
+
+        IllBeBack.debug { binding.pry } # stops once after 'prepare!' call
+        IllBeBack.debug(2.times) { binding.pry } # stops twice after 'prepare!' call
+        IllBeBack.debug_at_call(4) { binding.pry } # stops at 4th call after 'prepare!' call
+        IllBeBack.debug_between_calls(2, 4) { binding.pry } # stops at calls 2, 3 and 4 after 'prepare!' call
+        IllBeBack.armed? # true if 'prepare!' was called
